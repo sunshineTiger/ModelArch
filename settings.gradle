@@ -1,0 +1,2 @@
+rootProject.name = "ModelArch"
+include ':app'
