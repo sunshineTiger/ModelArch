@@ -1,2 +1,3 @@
 rootProject.name = "ModelArch"
 include ':app'
+include ':basemodule'
