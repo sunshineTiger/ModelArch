@@ -1,7 +1,7 @@
 package com.example.baselibrary.base
 
 import android.os.Bundle
-import android.os.PersistableBundle
+import android.util.Log
 import androidx.annotation.Nullable
 import androidx.appcompat.app.AppCompatActivity
 
@@ -11,8 +11,12 @@ import androidx.appcompat.app.AppCompatActivity
  * @Date 2021/8/2 16:36
  */
 abstract class BaseActivity : AppCompatActivity(), BaseBehavior {
+    companion object {
+        const val SAVE_BUNDLE: String = "save_bundle_flag"
+        val TAG: String = BaseActivity::class.java.name
+    }
 
-    val SAVE_BUNDLE: String = "save_bundle_flag"
+    private var savedBundle: Bundle? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,21 +32,24 @@ abstract class BaseActivity : AppCompatActivity(), BaseBehavior {
     }
 
     @Nullable
-    abstract fun getSaveBundle(): Bundle
-    abstract fun getSaveMap()
-
+    open fun getSaveBundle(): Bundle? {
+        return null
+    }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         if (getSaveBundle() != null) {
+            // 被销毁前缓存一些数据
+            Log.e(TAG, String.format("%s %s", TAG, " onSaveInstanceState"))
             outState.putBundle(SAVE_BUNDLE, getSaveBundle())
         }
-
     }
 
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-
+        // 重新创建后恢复缓存的数据
+        Log.e(TAG, String.format("%s %s", TAG, " onRestoreInstanceState"))
+        savedBundle = savedInstanceState.getBundle(SAVE_BUNDLE)
     }
 }

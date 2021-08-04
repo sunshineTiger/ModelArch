@@ -6,14 +6,6 @@ import com.example.baselibrary.base.BaseActivity
 import com.example.basemodule.http.HttpManger
 
 class MainActivity : BaseActivity() {
-    override fun getSaveBundle(): Bundle {
-        TODO("Not yet implemented")
-    }
-
-    override fun getSaveMap() {
-        TODO("Not yet implemented")
-    }
-
     override fun getLayoutId(): Int {
         return R.layout.activity_main
     }
@@ -23,5 +15,6 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initData() {
+        SAVE_BUNDLE
     }
 }
