@@ -9,7 +9,12 @@ ext {
             "versionName"      : "1.0"
     ]
 
-    dependencies = [
+    dependVersion = [
             // 依赖包 ：
+            glide_version: '3.8.0'
+    ]
+
+    dependencies = [
+            "glide": "com.android.support:cardview-v7:${dependVersion.glide_version}",
     ]
 }

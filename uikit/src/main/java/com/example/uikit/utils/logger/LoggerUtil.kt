@@ -1,4 +1,4 @@
-package com.example.uikit.logger
+package com.example.uikit.utils.logger
 
 import android.util.Log
 import androidx.annotation.IntDef
@@ -10,12 +10,9 @@ import org.jetbrains.annotations.NotNull
  * @Author zhangHong
  * @Date 2021/8/13 18:02
  */
-class Logger {
+class LoggerUtil {
     companion object {
-        fun Log(@NotNull tag: String, @NotNull message: String, @LevelType type: Int) {
-            if (!BuildConfig.DEBUG) {
-                return
-            }
+        private fun log(@NotNull tag: String, @NotNull message: String, @LevelType type: Int) {
             when (type) {
                 LevelType.LEVEL_DEBUG -> {
                     Log.d(tag, message)
@@ -33,7 +30,41 @@ class Logger {
                     Log.v(tag, message)
                 }
             }
-            Log.d("debugLog", "debugLog: ")
+        }
+
+        fun logDebug(@NotNull tag: String, @NotNull message: String) {
+            if (!BuildConfig.DEBUG) {
+                return
+            }
+            log(tag, message, LevelType.LEVEL_DEBUG)
+        }
+
+        fun logError(@NotNull tag: String, @NotNull message: String) {
+            if (!BuildConfig.DEBUG) {
+                return
+            }
+            log(tag, message, LevelType.LEVEL_ERROR)
+        }
+
+        fun logWarning(@NotNull tag: String, @NotNull message: String) {
+            if (!BuildConfig.DEBUG) {
+                return
+            }
+            log(tag, message, LevelType.LEVEL_WARNING)
+        }
+
+        fun logInfo(@NotNull tag: String, @NotNull message: String) {
+            if (!BuildConfig.DEBUG) {
+                return
+            }
+            log(tag, message, LevelType.LEVEL_INFO)
+        }
+
+        fun logVerbose(@NotNull tag: String, @NotNull message: String) {
+            if (!BuildConfig.DEBUG) {
+                return
+            }
+            log(tag, message, LevelType.LEVEL_VERBOSE)
         }
 
         @IntDef(
