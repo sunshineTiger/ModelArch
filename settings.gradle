@@ -1,3 +1,4 @@
 rootProject.name = "ModelArch"
 include ':app'
 include ':baseLibrary'
+include ':uikit'
