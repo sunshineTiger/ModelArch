@@ -26,11 +26,11 @@ class HttpManger() {
 
     private fun initHttp() {
         //初始化Retrofit
-        val retrofit = Retrofit.Builder()
-            .baseUrl(if (TextUtils.isEmpty(baseUrl)) "" else baseUrl)
-            .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
-            .build()
+//        val retrofit = Retrofit.Builder()
+//            .baseUrl(if (TextUtils.isEmpty(baseUrl)) "" else baseUrl)
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .addCallAdapterFactory(CoroutineCallAdapterFactory())
+//            .build()
     }
 
     public fun setBaseUrl(baseUrl: String) {
