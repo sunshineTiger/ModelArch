@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.example.uikit">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.uikit">
 
+    <application>
+        <meta-data
+            android:name="com.example.uikit.utils.image.MyAppGlideModule"
+            android:value="GlideModule" />
+    </application>
 </manifest>
